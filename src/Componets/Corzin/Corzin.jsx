@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useCart } from "../../CartContext";
+import { useCart } from "../../CartContext.jsx";
 import { Link } from "react-router-dom";
 import stor from "../../assets/магазин.png";
 import scss from "./Corzin.module.scss";
