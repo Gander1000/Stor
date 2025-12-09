@@ -1,8 +1,9 @@
 .Corzin {
   padding: 8vw;
   padding-top: 2vw;
-  background-color: teal;
   border: solid 10px #4a008f;
+  border-bottom:0;
+  border-top:0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -197,13 +198,14 @@
 }
 
 .Logo {
-  background-color: #4a008f;
   border: solid 10px goldenrod;
+  border-top: 0;
   height: 44vw;
   align-items: center;
   justify-content: center;
 
   div {
+    background-color: #4a008f;
     display: flex;
     flex-direction: column;
     gap: 30px;

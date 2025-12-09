@@ -1,0 +1,35 @@
+.Foter {
+  display: flex;
+  border: solid 10px #4a008f;
+  border-top: 0;
+  padding: 5vw 2vw;
+  justify-content: space-between;
+
+  .section{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    h1{
+        font-size: 20px;
+        color: goldenrod;
+    }
+    
+    a{
+        font-size: 20px;
+        background-color: #4a008f;
+        border-radius: 30px;
+        padding: 5px;
+        text-align: center;
+        transition: 0.3s;
+        cursor: pointer;
+        border-bottom: solid 2px goldenrod;
+        box-shadow: 0 4px 15px black;
+
+        &:hover{
+            background-color: teal;
+            color: black;
+        }
+    }
+  }
+}

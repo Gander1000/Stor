@@ -1,54 +1,48 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useRef, useState } from "react";
+import ebay from "../../assets/ebay.png";
+import луна from "../../assets/луна.png";
+import солнце from "../../assets/солнце.png";
 import scss from "./Heder.module.scss";
 import { Link } from "react-router-dom";
 import korzina from "../../assets/korzina.png";
-import { useCart } from "../../CartContext";
 
 const Heder = () => {
-  const [products, setProducts] = useState([]);
-  const { cart, addProduct, removeProduct, deleteOne, clearCart } = useCart();
-
-  async function getProducts() {
-    const res = await axios("https://fakestoreapi.com/products");
-    setProducts(res.data);
-  }
+  const [tema, setTema] = useState("light");
+  const [logo, setLogo] = useState(солнце);
 
   useEffect(() => {
-    getProducts();
-  }, []);
-
-  const total = products.reduce((acc, el) => {
-    const count = cart[el.id] || 0;
-    return acc + el.price * count;
-  }, 0);
+    document.body.classList.remove("light", "dark");
+    document.body.classList.add(tema);
+  }, [tema]);
 
   return (
     <section className={scss.Heder}>
-      <Link to="/Corzin">
-        <img src={korzina} alt="Корзина" />
-        <p>Корзина</p>
+      <Link className={scss.logo} to="/">
+        EBEY.com
       </Link>
-
-      {products.slice(0, 20).map((el) => (
-        <div key={el.id} className={scss.Heder}>
-          <div className={scss.contai_div}>
-            <img src={el.image} alt={el.title} width={150} />
-          </div>
-            <h1>{el.rating.rate}</h1>
-            <h2>{el.rating.count}</h2>
-            <h3>{el.price}$</h3>
-          <button onClick={() => addProduct(el.id)}>Добавить +</button>
-          <p>{cart[el.id] || 0}</p>
-          <button onClick={() => removeProduct(el.id)}>Убавит-</button>
-          <button onClick={() => deleteOne(el.id)}>Удалить</button>
-          <p>{(el.price * (cart[el.id] || 0)).toFixed(2)}$</p>
-        </div>
-      ))}
-
+      <div className={scss.contai_a}>
+        <a href="">Heder</a>
+        <a href="">Home</a>
+        <a href="">Cart</a>
+        <a href="">Corzin</a>
+        <a href="">Produckt</a>
+        <a href="">Foter</a>
+      </div>
       <div className={scss.foter}>
-        <h4>Итого: {total.toFixed(2)}$</h4>
-        <button onClick={clearCart}>Очистить корзину</button>
+        <div className={scss.tema}>
+          <button onClick={() => setTema(tema === "light" ? "dark" : "light")}>
+            <img
+              onClick={() => setLogo(logo === солнце ? луна : солнце)}
+              src={logo}
+              alt="logo"
+              width={50}
+            />
+          </button>
+        </div>
+        <Link className={scss.corzin} to="/Corzin">
+          <img src={korzina} alt="Корзина" />
+          <p>Корзина</p>
+        </Link>
       </div>
     </section>
   );
